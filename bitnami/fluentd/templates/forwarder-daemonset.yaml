@@ -37,6 +37,9 @@ spec:
       {{- if .Values.forwarder.tolerations }}
       tolerations: {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.tolerations "context" $) | nindent 8 }}
       {{- end }}
+      {{- if .Values.forwarder.priorityClassName }}
+      priorityClassName: {{ .Values.forwarder.priorityClassName }}
+      {{- end }}
       {{- if .Values.forwarder.securityContext.enabled }}
       securityContext:
         runAsUser: {{ .Values.forwarder.securityContext.runAsUser }}
